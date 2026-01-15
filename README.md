@@ -40,6 +40,8 @@ cp .env.example .env
 docker compose up -d
 ```
 
+The compose file mounts `./schemas` into the container at `/files/schemas`.
+
 4) Open the editor:
 
 ```
@@ -62,6 +64,15 @@ Include header:
 
 ```
 Authorization: Bearer <BOOTSTRAP_BEARER_TOKEN>
+```
+
+## Smoke test
+
+```bash
+export BOOTSTRAP_BEARER_TOKEN=your_token
+export BASE_URL=http://localhost:5678/webhook
+./scripts/smoke_bootstrap.sh
+./scripts/smoke_bootstrap_repeat.sh
 ```
 
 ## Repository layout
