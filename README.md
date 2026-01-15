@@ -32,7 +32,9 @@ cp .env.example .env
 - `N8N_BASIC_AUTH_USER` / `N8N_BASIC_AUTH_PASSWORD`
 - `N8N_ENCRYPTION_KEY` (32+ chars)
 - `NOTION_API_KEY` (Notion internal integration token)
-- `BOOTSTRAP_BEARER_TOKEN` (shared secret for bootstrap endpoint)
+- `BOOTSTRAP_BEARER_TOKEN` (shared secret for all v1 endpoints)
+- `API_BEARER_TOKEN` (fallback if bootstrap token is not set)
+- `NODE_FUNCTION_ALLOW_BUILTIN` should include `fs,path` for schema-as-code access
 
 3) Start n8n + Postgres:
 
@@ -51,8 +53,8 @@ http://localhost:5678
 ## How to import the workflow
 
 1) In n8n, go to Workflows -> Import from File.
-2) Select `n8n/workflows/v1_os_bootstrap.json`.
-3) Save and activate the workflow.
+2) Select the workflow JSON files in `n8n/workflows/`.
+3) Save and activate each workflow.
 
 The webhook endpoint will be:
 
@@ -66,13 +68,17 @@ Include header:
 Authorization: Bearer <BOOTSTRAP_BEARER_TOKEN>
 ```
 
-## Smoke test
+## Smoke tests (Docker-only)
 
 ```bash
-export BOOTSTRAP_BEARER_TOKEN=your_token
-export BASE_URL=http://localhost:5678/webhook
-./scripts/smoke_bootstrap.sh
-./scripts/smoke_bootstrap_repeat.sh
+docker compose up -d
+docker compose run --rm smoke all
+```
+
+If n8n registers webhooks with a workflow ID prefix, set:
+
+```
+SMOKE_WEBHOOK_PREFIX=<workflow_id>/webhook
 ```
 
 ## Repository layout
@@ -83,3 +89,7 @@ export BASE_URL=http://localhost:5678/webhook
 - `scripts/` - Local helper scripts
 - `docs/` - Supplemental docs
 - `.github/` - Issue templates and CI
+
+## Endpoints
+
+See `docs/endpoints.md` for request/response examples, registry key mapping, and token rotation.

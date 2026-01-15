@@ -31,6 +31,19 @@ services:
       - n8n_data:/home/node/.n8n
       - ./schemas:/files/schemas:ro
 
+  smoke:
+    image: python:3.11-slim
+    depends_on:
+      - n8n
+    working_dir: /workspace
+    entrypoint: ["python", "scripts/smoke_runner.py"]
+    environment:
+      SMOKE_BASE_URL: http://n8n:5678
+    env_file:
+      - .env
+    volumes:
+      - ./:/workspace:ro
+
 volumes:
   postgres_data:
   n8n_data:
