@@ -1,0 +1,11 @@
+{
+  "title": "Clients",
+  "properties": {
+    "Name": { "title": {} },
+    "Status": { "select": { "options": [
+      { "name": "Active" },
+      { "name": "Inactive" }
+    ] } },
+    "Notes": { "rich_text": {} }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Request Ledger",
+  "properties": {
+    "Idempotency Key": { "title": {} },
+    "Request ID": { "rich_text": {} },
+    "Endpoint": { "rich_text": {} },
+    "Status": { "select": { "options": [
+      { "name": "ok" },
+      { "name": "error" }
+    ] } },
+    "Result Object ID": { "rich_text": {} },
+    "Timestamp": { "date": {} },
+    "Raw Request": { "rich_text": {} }
+  }
+}

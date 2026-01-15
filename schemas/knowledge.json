@@ -1,0 +1,13 @@
+{
+  "title": "Knowledge",
+  "properties": {
+    "Title": { "title": {} },
+    "Type": { "select": { "options": [
+      { "name": "Note" },
+      { "name": "Link" },
+      { "name": "Doc" }
+    ] } },
+    "URL": { "url": {} },
+    "Notes": { "rich_text": {} }
+  }
+}

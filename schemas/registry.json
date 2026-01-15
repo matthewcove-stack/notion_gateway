@@ -1,0 +1,9 @@
+{
+  "title": "OS Registry",
+  "properties": {
+    "Key": { "title": {} },
+    "Value": { "rich_text": {} },
+    "Schema Version": { "number": { "format": "number" } },
+    "Last Bootstrap Run": { "date": {} }
+  }
+}

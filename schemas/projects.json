@@ -1,0 +1,12 @@
+{
+  "title": "Projects",
+  "properties": {
+    "Name": { "title": {} },
+    "Status": { "select": { "options": [
+      { "name": "Active" },
+      { "name": "On Hold" },
+      { "name": "Done" }
+    ] } },
+    "Notes": { "rich_text": {} }
+  }
+}

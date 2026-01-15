@@ -1,0 +1,21 @@
+{
+  "title": "Tasks",
+  "properties": {
+    "Title": { "title": {} },
+    "Status": { "select": { "options": [
+      { "name": "Todo" },
+      { "name": "In Progress" },
+      { "name": "Done" }
+    ] } },
+    "Due": { "date": {} },
+    "Priority": { "select": { "options": [
+      { "name": "Low" },
+      { "name": "Medium" },
+      { "name": "High" }
+    ] } },
+    "Project": { "rich_text": {} },
+    "Tags": { "multi_select": { "options": [] } },
+    "Notes": { "rich_text": {} },
+    "Idempotency Key": { "rich_text": {} }
+  }
+}
