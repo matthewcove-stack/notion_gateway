@@ -44,6 +44,16 @@ services:
     volumes:
       - ./:/workspace:ro
 
+  ngrok:
+    image: ngrok/ngrok:latest
+    depends_on:
+      - n8n
+    ports:
+      - "4040:4040"
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
+    command: ["http", "n8n:5678", "--log=stdout", "--log-level=info"]
+
 volumes:
   postgres_data:
   n8n_data:

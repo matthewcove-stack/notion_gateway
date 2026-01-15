@@ -81,6 +81,23 @@ If n8n registers webhooks with workflow ID prefixes, either set `N8N_API_KEY` in
 SMOKE_WEBHOOK_PREFIX=<workflow_id>/webhook
 ```
 
+## Expose n8n via ngrok (Docker-only)
+
+1) Set `NGROK_AUTHTOKEN` in `.env`.
+2) Start the tunnel:
+
+```bash
+docker compose up -d ngrok
+```
+
+3) Get the public URL:
+
+```bash
+docker compose logs -f ngrok
+```
+
+Use the printed `https://...ngrok-free.app` URL as your webhook base.
+
 ## Repository layout
 
 - `INTENT.md` - Canonical spec and requirements
